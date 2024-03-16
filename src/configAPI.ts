@@ -1,0 +1,1 @@
+export const BaseUrl = "http://localhost:8080/salora-web-service/"
