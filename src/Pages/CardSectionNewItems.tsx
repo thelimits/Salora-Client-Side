@@ -72,7 +72,7 @@ const CardSectionNewItems: React.FC<ViewCardCategory> = ({category}) => {
                                     border: '0',
                                     borderRadius: '15px',
                                     boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.1)'}} className='hover:shadow-xl hover:transform hover:translate-x-[10px] hover:translate-y-[30px] hover:border-gray-300 h-full translate-y-10'>
-                                    <CCardImage alt='image not found' orientation="top" src={product.imageUrl} className='h-[400px] w-auto object-contain pt-3'/>
+                                    {/* <CCardImage alt='image not found' orientation="top" src={product.imageUrl} className='h-[400px] w-auto object-contain pt-3'/> */}
                                     <CCardBody className='h-48'>
                                         <a href={`/p/${product.id}_${product.description.replace(/[-\s/]+/g, "-")}`} className='no-underline text-black'>
                                             <CCardTitle className='hover:text-blue-500 transition duration-500 ease-in-out'>{product.productName}</CCardTitle>
