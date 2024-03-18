@@ -9,8 +9,9 @@ import { FaQuestionCircle } from "react-icons/fa";
 import { PiPackage } from "react-icons/pi";
 import { logout } from '@/Server/lib';
 import { redirect } from "next/navigation";
+import { FaUserCog } from "react-icons/fa";
 
-export const MenuDropdown = ({session}: any) => {
+export const MenuDropdown = ({session, role}: any) => {
   return (
     <Paper sx={{ width: 320, maxWidth: '100%'}}>
       <MenuList>
@@ -43,6 +44,22 @@ export const MenuDropdown = ({session}: any) => {
             }
           </ListItemText>
         </MenuItem>
+        {
+          session ? (
+            <MenuItem>
+              <ListItemIcon>
+                <FaUserCog className='text-2xl'/>
+              </ListItemIcon>
+              <ListItemText>
+                    <a className='text-black decoration-transparent decoration-2 underline-offset-4 hover:underline hover:decoration-inherit' href={`/${role}/account/profile`} aria-label="Salora">
+                        Profile
+                    </a>
+              </ListItemText>
+          </MenuItem>
+          ) : (
+            <div></div>
+          )
+        }
         <MenuItem>
           <ListItemIcon>
             <PiPackage className='text-2xl'/>

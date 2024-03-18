@@ -35,6 +35,7 @@ const CardSectionNewItems: React.FC<ViewCardCategory> = ({category}) => {
         const fetchData = async () => {
           try {
             const response = await fetch(`${BaseUrl}products?category=${category}&size=5`, {
+              method: "GET",
               cache: "no-store",
               next: {
                 revalidate: 3600
@@ -49,7 +50,7 @@ const CardSectionNewItems: React.FC<ViewCardCategory> = ({category}) => {
         };
     
         fetchData();
-    }, []);
+    }, [category]);
 
   return (
     <div className='bg-primayBG pb-12 x1:px-28 px-4 relative'>

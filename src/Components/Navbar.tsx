@@ -11,7 +11,7 @@ import Menu from '@mui/material/Menu';
 import MenuDropdown from './MenuDropdown';
 import { useLocation } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { getUname } from '@/Server/lib';
+import { getRole, getUname } from '@/Server/lib';
 
 export const Navbar = () => {
   return (
@@ -32,6 +32,7 @@ const Header = () => {
         {nav: "LIFESTYLE", path: "/s/lifestyle"},
     ]
     const [sessionUname, setSessionUname] = useState<string | undefined>();
+    const [sessionRole, setSessionRole] = useState<string | undefined>();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
@@ -49,6 +50,14 @@ const Header = () => {
             setSessionUname(uname);
           };
           fetchUnameCookies();
+    }, []);
+
+    useEffect(() => {
+        const fetchRoleCookies = async () => {
+            const role = await getRole();
+            setSessionRole(role);
+          };
+          fetchRoleCookies();
     }, []);
 
     return (
@@ -127,7 +136,7 @@ const Header = () => {
                                                     'aria-labelledby': 'basic-button',
                                                 }}
                                             >
-                                                <MenuDropdown session={sessionUname}/>
+                                                <MenuDropdown session={sessionUname} role={sessionRole}/>
                                             </Menu>
                                         </div>
                                     )}

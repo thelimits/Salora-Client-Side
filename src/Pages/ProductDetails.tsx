@@ -54,6 +54,7 @@ export const ProductDetails: React.FC<ViewProduct> = ({id}) => {
         const fetchData = async () => {
             try {
                 const response = await fetch(`${BaseUrl}products/${id}`, {
+                    method: "GET",
                     cache: "no-store",
                     next: {
                         revalidate: 3600
